@@ -6,7 +6,6 @@ import com.influmarket.platform.Service.Imple.InfluencerServiceImpel;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 
 
 
@@ -26,21 +25,6 @@ public class InfluencerController {
     @GetMapping
     public String getInfluencerDetails(){
         return "Details of influencer: " + influencerService.getAllInfluencers();
-    }
-    @GetMapping("/uaccess")
-    @PreAuthorize("hasRole('user')")
-    public String UserAccess(){
-        return "AccessGranted for the User";
-    }
-    @GetMapping("/iaccess")
-    @PreAuthorize("hasRole('influencer')")
-    public String InfluAccess(){
-        return "Access Granted for the Influencer";
-    }
-    @GetMapping("/baccess")
-    @PreAuthorize("hasRole('brand')")
-    public String BrandersAccess(){
-        return "Access Granted for the Brand Influencers";
     }
     @GetMapping("/profile")
     public Influencer getProfile(Authentication authentication){
